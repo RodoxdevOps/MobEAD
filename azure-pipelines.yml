@@ -1,16 +1,3 @@
-# ASP.NET Core (.NET Framework)
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Newpipiline'
-    appType: 'webApp'
-    WebAppName: 
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-- task: AzureAppServiceManage@0
-  inputs:
-    azureSubscription: 'Newpipiline'
-    Action: 'Start Azure App Service'
-    WebAppName: 'App'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -37,6 +24,19 @@ steps:
 # Command line
 # Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
 
+# ASP.NET Core (.NET Framework)
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Newpipiline'
+    appType: 'webApp'
+    WebAppName: 
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+- task: AzureAppServiceManage@0
+  inputs:
+    azureSubscription: 'Newpipiline'
+    Action: 'Start Azure App Service'
+    WebAppName: 'App'
 - task: CmdLine@2
   inputs:
     script: 'mkdir d:\a\1\MobEAD' 
